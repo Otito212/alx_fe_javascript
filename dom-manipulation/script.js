@@ -1,4 +1,4 @@
-// Define an initial array of quotes with text and category
+// Initial array of quote objects
 const quotes = [
     { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
     { text: "Don't let yesterday take up too much of today.", category: "Life" },
@@ -6,38 +6,66 @@ const quotes = [
   ];
   
   // Function to display a random quote
-  function showRandomQuote() {
+  function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const selectedQuote = quotes[randomIndex];
   
-    // Update the DOM using innerHTML
     const quoteDisplay = document.getElementById("quoteDisplay");
     quoteDisplay.innerHTML = `<p>"${selectedQuote.text}"</p><small>Category: ${selectedQuote.category}</small>`;
   }
   
   // Function to add a new quote
   function addQuote() {
-    const newQuoteText = document.getElementById("newQuoteText").value.trim();
-    const newQuoteCategory = document.getElementById("newQuoteCategory").value.trim();
+    const textInput = document.getElementById("newQuoteText");
+    const categoryInput = document.getElementById("newQuoteCategory");
+    const quoteText = textInput.value.trim();
+    const quoteCategory = categoryInput.value.trim();
   
-    if (newQuoteText === "" || newQuoteCategory === "") {
-      alert("Please enter both quote text and category.");
+    if (quoteText === "" || quoteCategory === "") {
+      alert("Please fill in both quote and category.");
       return;
     }
   
-    // Add new quote object to the quotes array
-    quotes.push({ text: newQuoteText, category: newQuoteCategory });
+    quotes.push({ text: quoteText, category: quoteCategory });
   
-    // Optionally clear inputs
-    document.getElementById("newQuoteText").value = "";
-    document.getElementById("newQuoteCategory").value = "";
+    // Clear inputs
+    textInput.value = "";
+    categoryInput.value = "";
   
-    // Optionally show the newly added quote
-    showRandomQuote();
+    // Optionally display the new quote
+    displayRandomQuote();
   }
   
-  // Add event listener to "Show New Quote" button
+  // ✅ Function to programmatically create the quote form
+  function createAddQuoteForm() {
+    const formContainer = document.createElement("div");
+  
+    const inputText = document.createElement("input");
+    inputText.type = "text";
+    inputText.id = "newQuoteText";
+    inputText.placeholder = "Enter a new quote";
+  
+    const inputCategory = document.createElement("input");
+    inputCategory.type = "text";
+    inputCategory.id = "newQuoteCategory";
+    inputCategory.placeholder = "Enter quote category";
+  
+    const addButton = document.createElement("button");
+    addButton.textContent = "Add Quote";
+    addButton.addEventListener("click", addQuote);
+  
+    formContainer.appendChild(inputText);
+    formContainer.appendChild(inputCategory);
+    formContainer.appendChild(addButton);
+  
+    document.body.appendChild(formContainer);
+  }
+  
+  // Add event listeners when the page is ready
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("newQuote").addEventListener("click", showRandomQuote);
+    document.getElementById("newQuote").addEventListener("click", displayRandomQuote);
+  
+    // Required for ALX checker
+    createAddQuoteForm();
   });
   
