@@ -6,7 +6,7 @@ const quotes = [
   ];
   
   // Function to display a random quote
-  function displayRandomQuote() {
+  function showRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const selectedQuote = quotes[randomIndex];
   
@@ -32,11 +32,11 @@ const quotes = [
     textInput.value = "";
     categoryInput.value = "";
   
-    // Optionally display the new quote
-    displayRandomQuote();
+    // Optionally show a random quote
+    showRandomQuote();
   }
   
-  // ✅ Function to programmatically create the quote form
+  // Function to programmatically create the quote form
   function createAddQuoteForm() {
     const formContainer = document.createElement("div");
   
@@ -61,11 +61,9 @@ const quotes = [
     document.body.appendChild(formContainer);
   }
   
-  // Add event listeners when the page is ready
+  // Load page
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("newQuote").addEventListener("click", displayRandomQuote);
-  
-    // Required for ALX checker
-    createAddQuoteForm();
+    document.getElementById("newQuote").addEventListener("click", showRandomQuote);
+    createAddQuoteForm(); // Must be called dynamically
   });
   
