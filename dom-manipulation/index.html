@@ -4,6 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dynamic Quote Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #quoteDisplay {
+      margin: 20px 0;
+      padding: 10px;
+      border-left: 4px solid #007bff;
+      background: #f9f9f9;
+    }
+    #syncStatus {
+      color: green;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    input, select, button {
+      margin: 5px;
+      padding: 8px;
+    }
+  </style>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
@@ -12,19 +33,23 @@
   <label for="categoryFilter">Filter by Category:</label>
   <select id="categoryFilter" onchange="filterQuotes()">
     <option value="all">All Categories</option>
-    <!-- Categories will be dynamically added here -->
+    <!-- Populated dynamically by JavaScript -->
   </select>
 
-  <!-- Quote Display Area -->
+  <!-- Area to show the quote -->
   <div id="quoteDisplay">Click the button to see a quote</div>
 
-  <!-- Buttons for Interaction -->
+  <!-- Sync status/notification area -->
+  <div id="syncStatus"></div>
+
+  <!-- Action buttons -->
   <button id="newQuote">Show New Quote</button>
   <button id="exportQuotes">Export Quotes</button>
   <input type="file" id="importFile" accept=".json" />
 
-  <!-- JavaScript File -->
+  <!-- The Add Quote form will be injected here -->
+  
+  <!-- Script to power the application -->
   <script src="script.js"></script>
 </body>
 </html>
-
