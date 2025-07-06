@@ -8,19 +8,24 @@
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <!-- Display area for the random quote -->
+  <!-- Category Filter -->
+  <label for="categoryFilter">Filter by Category:</label>
+  <select id="categoryFilter" onchange="handleCategoryChange()">
+    <option value="all">All Categories</option>
+    <!-- Populated dynamically -->
+  </select>
+
+  <!-- Quote display -->
   <div id="quoteDisplay">Click the button to see a quote</div>
 
-  <!-- Button to trigger quote display -->
+  <!-- Show new quote -->
   <button id="newQuote">Show New Quote</button>
 
-  <!-- Export and Import Controls -->
+  <!-- Export and import -->
   <button id="exportQuotes">Export Quotes</button>
   <input type="file" id="importFile" accept=".json" />
 
-  <!-- DO NOT hardcode form here. It will be added dynamically -->
-
-  <!-- Link to JavaScript -->
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
